@@ -3598,6 +3598,10 @@ class AzurePlugin(PluginDistroTag):
     """Tagging class for Azure Linux"""
     pass
 
+class DarwinPlugin(PluginDistroTag):
+    """Tagging class for Darwin"""
+    pass
+
 
 def import_plugin(name, superclasses=None):
     """Import name as a module and return a list of all classes defined in that

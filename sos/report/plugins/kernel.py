@@ -7,6 +7,7 @@
 # See the LICENSE file in the source distribution for further information.
 
 import glob
+import sys
 from sos.policies.distros.redhat import RedHatPolicy
 from sos.report.plugins import Plugin, IndependentPlugin, PluginOpt
 
@@ -43,6 +44,8 @@ class Kernel(Plugin, IndependentPlugin):
     ]
 
     def setup(self):
+        if not sys.platform == 'linux':
+          return
         # RedHat distributions can deliver kernel in RPM named either 'kernel'
         # or 'kernel-redhat', so we must verify both
         if isinstance(self.policy, RedHatPolicy):

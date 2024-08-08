@@ -44,7 +44,10 @@ class Process(Plugin, IndependentPlugin):
             "/sys/kernel/debug/sched/features"
         ])
 
-        procs = [p for p in self.listdir("/proc") if re.match("[0-9]", p)]
+        if os.path.exists("/proc"):
+          procs = [p for p in self.listdir("/proc") if re.match("[0-9]", p)]
+        else
+          procs = []
         if self.get_option("numprocs"):
             procs = procs[:self.get_option("numprocs")]
 

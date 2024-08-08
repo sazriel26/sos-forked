@@ -21,7 +21,7 @@ class Date(Plugin, IndependentPlugin):
 
         self.add_cmd_output([
             'date',
-            'date --utc',
+            'date -u', # flag --utc is not supported in Darwin
             'hwclock'
         ], cmd_as_tag=True)
 

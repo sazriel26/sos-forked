@@ -43,7 +43,7 @@ def load(cache={}, sysroot=None, init=None, probe_runtime=True,
                                          probe_runtime=probe_runtime,
                                          remote_exec=remote_exec)
 
-    if sys.platform != 'linux':
+    if not sys.platform in [ 'linux', 'darwin' ]:
         raise Exception("SoS is not supported on this platform")
 
     if 'policy' not in cache:

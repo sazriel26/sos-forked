@@ -12,7 +12,7 @@ import hashlib
 import json
 import os
 from sos.report.plugins import (Plugin, RedHatPlugin, DebianPlugin,
-                                UbuntuPlugin, PluginOpt)
+                                UbuntuPlugin, DarwinPlugin, PluginOpt)
 from sos.policies.distros.redhat import RHELPolicy
 
 
@@ -109,5 +109,10 @@ class RedHatPython(Python, RedHatPlugin):
                         self._log_error("Unable to read python file at "
                                         f"{filepath}")
         return digests
+
+class DarwinPython(Python, DarwinPlugin):
+
+    python_version = "python3 -V"
+    #packages = ('python3',)
 
 # vim: set et ts=4 sw=4 :
